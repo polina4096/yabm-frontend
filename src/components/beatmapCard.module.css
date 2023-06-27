@@ -1,0 +1,58 @@
+.card {
+  background-color: #f7f7f7;
+  border: #dadada 1px solid;
+  border-radius: 6px;
+  padding: 16px 20px;
+  cursor: pointer;
+  transition: margin-top 0.15s, box-shadow 0.15s;
+}
+
+.cardContainer:hover {
+  text-decoration: none;
+}
+
+.cardImage {
+  border-radius: 6px 6px 0 0;
+  margin: -16px -20px 0 -20px;
+  padding-bottom: 8px;
+  width: calc(100% + 40px);
+  height: auto;
+  transition: filter 0.15s;
+}
+
+.cardTitle {
+  color: #9f9f9f;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.cardDetails {
+  color: #6f6f6f;
+  font-size: 1.75rem;
+  font-weight: bolder;
+  padding-bottom: 6px;
+}
+
+.cardSubDetails {
+  color: #6f6f6f;
+  font-size: 0.9rem;
+  font-weight: normal;
+}
+
+.cardSubDetailsDark {
+  color: #8f8f8f;
+}
+
+.card:hover {
+  margin-top: -4px;
+  box-shadow: 0 1px 1px rgba(3, 7, 18, 0.1), 0 3px 3px rgba(3, 7, 18, 0.08),
+    0 6px 6px rgba(3, 7, 18, 0.06), 0 10px 10px rgba(3, 7, 18, 0.04),
+    0 16px 16px rgba(3, 7, 18, 0.02);
+}
+
+.cardDifficulties {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  padding-bottom: 8px;
+}

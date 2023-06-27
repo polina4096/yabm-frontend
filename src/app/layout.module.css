@@ -1,0 +1,25 @@
+.logo {
+  font-size: 1.75rem;
+  font-weight: bold;
+}
+
+.logo:hover {
+  text-decoration: none;
+}
+
+.navbar {
+  padding: 16px 24px;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 28px;
+}
+
+.navbar:nth-child(1) > *:not(:first-child) {
+  display: block;
+  letter-spacing: 1px;
+}
+
+.body {
+  min-height: 100vh;
+}

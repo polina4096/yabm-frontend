@@ -1,0 +1,8 @@
+.star {
+  display: inline-block;
+  background-color: #ffffff;
+  mask: url("/star.svg") no-repeat center;
+  mask-size: 16px auto;
+  height: 16px;
+  width: 16px;
+}

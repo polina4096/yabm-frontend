@@ -1,0 +1,173 @@
+.searchBarContainer {
+  position: relative;
+  display: inline-block;
+}
+
+.searchBarContainer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 8px;
+  margin: auto;
+  background-color: #acacac;
+  mask: url("/search.svg") no-repeat center;
+  mask-size: 24px auto;
+  height: 24px;
+  width: 24px;
+  opacity: 1;
+  transition: all 0.2s;
+}
+
+.searchBarContainer:focus-within::after {
+  right: -10px;
+  opacity: 0;
+}
+
+.searchBar {
+  width: 320px;
+  background-color: #f7f7f7;
+  transition: background-color 0.05s, width 0.1s;
+  border: #dadada 1px solid;
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-size: 0.9rem;
+}
+
+.searchBar:focus {
+  width: 380px;
+  background-color: #fbfbfb;
+  box-shadow: 0 0 0 3px rgba(0, 144, 237, 0.4);
+  border: #0085f2 1px solid;
+  outline: none;
+}
+
+.searchBar::placeholder {
+  transition: opacity 0.15s, transform 0.05s;
+  opacity: 1;
+}
+
+.searchBar:focus::placeholder {
+  transform: translateX(-10px);
+  opacity: 0;
+}
+
+@keyframes searchBarSuggestionsAppearAnimation {
+  from {
+    opacity: 0;
+    transform: scale(0.98, 0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1, 1);
+  }
+}
+
+@keyframes searchBarSuggestionsDisappearAnimation {
+  from {
+    opacity: 1;
+    transform: scale(1, 1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.98, 0.98);
+  }
+}
+
+.searchBarSuggestions {
+  animation: searchBarSuggestionsAppearAnimation 0.2s;
+  box-shadow: 0px 1px 1px rgba(3, 7, 18, 0.1), 0px 3px 3px rgba(3, 7, 18, 0.08),
+    0px 6px 6px rgba(3, 7, 18, 0.06), 0px 10px 10px rgba(3, 7, 18, 0.04),
+    0px 16px 16px rgba(3, 7, 18, 0.02);
+
+  width: 512px;
+  max-height: 384px;
+  overflow: scroll;
+  position: absolute;
+  top: 48px;
+  left: calc(50% - 256px);
+  background-color: #f7f7f7;
+  border-radius: 6px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.searchBarSuggestionsLoading {
+  filter: saturate(75%) brightness(75%);
+}
+
+.searchBarSuggestionsLoading::before {
+  content: "";
+  position: absolute;
+  top: calc(50% - 16px - 2px);
+  left: calc(50% - 16px - 2px);
+  z-index: 1;
+  border: 4px solid transparent;
+  border-top: 4px solid #ffffff;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  animation: spin 1.5s cubic-bezier(0.5, 0.25, 0.5, 0.75) infinite;
+}
+
+.searchBarSuggestionEntry:hover {
+  cursor: pointer;
+}
+
+.searchBarSuggestionEntry {
+  height: 48px;
+  overflow: hidden;
+  position: relative;
+}
+
+.searchBarSuggestionEntryText {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 48px;
+  color: #ffffff;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+}
+
+.searchBarSuggestionEntry:hover > .searchBarSuggestionEntryImage {
+  filter: saturate(90%) brightness(90%);
+}
+
+.searchBarSuggestionEntryMeta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.searchBarSuggestionEntryImage {
+  width: 100%;
+  height: 48px;
+  filter: saturate(75%) brightness(75%);
+  transition: filter 0.1s;
+}
+
+.searchBarSuggestionEntry:first-child {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.searchBarSuggestionEntry:last-child {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.searchBarSuggestionEntry:not(:first-child) {
+  margin-top: -1px;
+  border-top: 1px solid rgba(0.8, 0.8, 0.8, 0.3);
+}
