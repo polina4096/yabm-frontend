@@ -1,5 +1,3 @@
-"use client";
-
 import React, { useEffect, useState } from "react";
 import styles from "./search.module.css";
 import icons from "@/app/icons.module.css";
@@ -21,13 +19,8 @@ enum SearchSuggestionState {
   Shown = 3,
 }
 
-export default function Search({ placeholder }: { placeholder?: string }) {
-  const [suggestionsState, setSuggestionsState] =
-    useState<SearchSuggestionState>(SearchSuggestionState.Mounted);
-
-  const [query, setQuery] = useState<string>("");
-  const debouncedData = useDebounce<string>(query, 250);
-
+export default function Search({ placeholder, query, setQuery }: { placeholder?: string, query: string, setQuery: (_: string) => void }) {
+  const [suggestionsState, setSuggestionsState] = useState<SearchSuggestionState>(SearchSuggestionState.Mounted);
   const [suggestions, setSuggestions] = useState<Suggestion[] | undefined>();
 
   useEffect(() => {
@@ -37,7 +30,10 @@ export default function Search({ placeholder }: { placeholder?: string }) {
           new URLSearchParams({
             query: query,
             limit: "8",
-          })
+          }),
+        {
+          cache: "no-store",
+        }
       ).then((e) => {
         return e.json().then((e) => {
           return e.items.map((beatmap: Beatmap) => {
@@ -63,7 +59,7 @@ export default function Search({ placeholder }: { placeholder?: string }) {
     fetchData().catch(console.error);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [debouncedData]);
+  }, [query]);
 
   return (
     <div className={styles.searchBarContainer}>
