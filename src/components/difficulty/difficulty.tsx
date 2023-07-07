@@ -1,6 +1,6 @@
 "use client";
 
-import styles from "@/components/difficulty.module.css";
+import styles from "@/components/difficulty/difficulty.module.css";
 import icons from "@/app/icons.module.css";
 import { Tooltip } from "react-tooltip";
 

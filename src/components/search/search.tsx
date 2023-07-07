@@ -19,7 +19,7 @@ enum SearchSuggestionState {
   Shown = 3,
 }
 
-export default function Search({ placeholder, query, setQuery }: { placeholder?: string, query: string, setQuery: (_: string) => void }) {
+export default function Search({ placeholder, query, setQuery, onSearch }: { placeholder?: string, query: string, setQuery: (_: string) => void, onSearch?: (_: string) => void }) {
   const [suggestionsState, setSuggestionsState] = useState<SearchSuggestionState>(SearchSuggestionState.Mounted);
   const [suggestions, setSuggestions] = useState<Suggestion[] | undefined>();
 
@@ -43,7 +43,7 @@ export default function Search({ placeholder, query, setQuery }: { placeholder?:
               highest:
                 _.maxBy(
                   beatmap.difficulties,
-                  (difficulty: Difficulty) => difficulty.starRating
+                  difficulty => difficulty.starRating
                 )?.starRating ?? -1,
             };
           });
@@ -66,6 +66,14 @@ export default function Search({ placeholder, query, setQuery }: { placeholder?:
       <input
         placeholder={placeholder}
         className={styles.searchBar}
+        onKeyDown={event => {
+          if (event.code == "Enter") {
+            const input = event.target as HTMLInputElement;
+            if (onSearch !== undefined) {
+              onSearch(input.value);
+            }
+          }
+        }}
         onChange={(e) => {
           setQuery(e.target.value);
           setSuggestionsState(SearchSuggestionState.Loading);
@@ -84,7 +92,7 @@ export default function Search({ placeholder, query, setQuery }: { placeholder?:
         }`}
         >
           {suggestions !== undefined &&
-            suggestions.map((suggestion: Suggestion) => (
+            suggestions.map(suggestion => (
               <div
                 key={suggestion.text}
                 className={styles.searchBarSuggestionEntry}

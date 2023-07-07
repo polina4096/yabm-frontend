@@ -22,4 +22,28 @@
 
 .body {
   min-height: 100vh;
+  display:flex;
+  flex-direction:column;
+}
+
+.main {
+  height: 100%;
+  flex: 1;
+}
+
+.footer {
+  color: #acacac;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding-bottom: 16px;
+}
+
+.footer > *:not(:first-child) {
+  padding-left: 8px;
+}
+
+.footer > *:not(:first-child):before {
+  padding-right: 8px;
+  content: '•';
 }

@@ -1,0 +1,112 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6rem;
+  height: 100%;
+}
+
+@keyframes layer1Animation {
+  from { transform: translateY(-100%); opacity: 0; }
+  to   { transform: translateY(   0%); opacity: 1; }
+}
+
+@keyframes layer2Animation {
+  from { transform: translateY(-125%); opacity: 0; }
+  to   { transform: translateY(   0%); opacity: 1; }
+}
+
+@keyframes layer3Animation {
+  from { transform: translateY(-200%); opacity: 0; }
+  to   { transform: translateY(   0%); opacity: 1; }
+}
+
+@keyframes layer4Animation {
+  from { transform: translateY(-300%); opacity: 0; }
+  to   { transform: translateY(   0%); opacity: 1; }
+}
+
+@keyframes layer5Animation {
+  from { transform: translateY(-450%); opacity: 0; }
+  to   { transform: translateY(   0%); opacity: 1; }
+}
+
+@keyframes layer6Animation {
+  from { transform: translateY(-600%); opacity: 0; }
+  to   { transform: translateY(   0%); opacity: 1; }
+}
+
+@keyframes beforeLayerAnimation {
+  from { opacity: 0; }
+  to   { opacity: 0; }
+}
+
+.logoLayer {
+  letter-spacing: 16px;
+}
+
+.logoLayer1 { animation: layer1Animation 0.3s 1.0s, beforeLayerAnimation 1.0s; font-weight: 600; }
+.logoLayer2 { animation: layer2Animation 0.3s 1.1s, beforeLayerAnimation 1.1s; font-weight: 500; }
+.logoLayer3 { animation: layer3Animation 0.3s 1.2s, beforeLayerAnimation 1.2s; font-weight: 400; }
+.logoLayer4 { animation: layer4Animation 0.3s 1.3s, beforeLayerAnimation 1.3s; font-weight: 300; }
+.logoLayer5 { animation: layer5Animation 0.3s 1.4s, beforeLayerAnimation 1.4s; font-weight: 200; }
+.logoLayer6 { animation: layer6Animation 0.3s 1.5s, beforeLayerAnimation 1.5s; font-weight: 100; }
+
+@keyframes logoAppearAnimation {
+  from { letter-spacing: 36px; transform: scale(125%); opacity: 0; }
+  to   { letter-spacing: 16px; transform: scale(100%); opacity: 1; }
+}
+
+.logo {
+  animation: logoAppearAnimation 1.0s;
+  letter-spacing: 16px;
+  font-weight: 700;
+}
+
+@keyframes logoAsideAnimation {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(calc(-50% - 256px)); }
+}
+
+@keyframes beforeAsideAnimation {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(-50%); }
+}
+
+.logoContainer {
+  animation: logoAsideAnimation 0.5s 2.25s, beforeAsideAnimation 2.25s;
+  position: absolute;
+  transform: translateX(calc(-50% - 256px));
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas:
+    ". . . .";
+
+  justify-items: center;
+}
+
+@keyframes contentAnimation {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes beforeContentAnimation {
+  from { opacity: 0; }
+  to   { opacity: 0; }
+}
+
+.slashContainer {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+}
+
+.splashContent {
+  animation: contentAnimation 0.5s 2.75s ease-in, beforeContentAnimation 2.75s;
+  position: absolute;
+  width: 480px;
+  margin-left: -128px;
+}

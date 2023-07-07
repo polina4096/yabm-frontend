@@ -1,6 +1,6 @@
-import styles from "@/components/beatmapCard.module.css";
+import styles from "@/components/beatmapCard/beatmapCard.module.css";
 import React from "react";
-import Difficulty from "@/components/difficulty";
+import Difficulty from "@/components/difficulty/difficulty";
 import { Beatmap } from "@/models/beatmap";
 
 export default function BeatmapCard({ beatmap }: { beatmap: Beatmap }) {
@@ -8,7 +8,7 @@ export default function BeatmapCard({ beatmap }: { beatmap: Beatmap }) {
     <a className={styles.cardContainer} href={`/download/${beatmap.id}`}>
       <div className={styles.card}>
         {/* eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text */}
-        <img className={styles.cardImage} src={beatmap.image} />
+        <img className={styles.cardPreview} src={`/preview/${beatmap.id}`} />
         <h1 className={styles.cardTitle}>{beatmap.author}</h1>
         <p className={styles.cardDetails}>{beatmap.title}</p>
         <div className={styles.cardDifficulties}>

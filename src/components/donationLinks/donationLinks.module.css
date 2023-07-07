@@ -1,0 +1,24 @@
+.donate {
+    padding-top: 4px;
+}
+
+.donate > li {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: 150%;
+
+    transition: background-color 0.1s;
+}
+
+.donate > li:hover {
+    background-color: #c3f65b;
+    cursor: pointer;
+}
+
+.donate > li:before {
+    padding-right: 6px;
+    padding-left: 6px;
+    content: '•';
+}

@@ -29,7 +29,11 @@ export default function RootLayout({
             <Link href="/about">about</Link>
           </nav>
         </header>
-        <main>{children}</main>
+        <main className={styles.main}>{children}</main>
+        <footer className={styles.footer}>
+          <p>lorem ipsum</p>
+          <p>2023</p>
+        </footer>
       </body>
     </html>
   );
